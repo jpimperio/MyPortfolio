@@ -30,7 +30,18 @@ export default function Hero() {
         </Suspense>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-900/30 via-transparent to-deep-900 z-[1]" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-deep-900/30 via-transparent to-deep-900" />
+
+      <div
+        className="absolute inset-0 z-[1] opacity-30"
+        style={{
+          background: "linear-gradient(135deg, #8b5cf6, #06b6d4, #a78bfa, #22d3ee)",
+          backgroundSize: "400% 400%",
+          animation: "gradient-shift 8s ease infinite",
+          maskImage: "linear-gradient(to bottom, transparent 20%, black 60%, transparent 80%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 20%, black 60%, transparent 80%)",
+        }}
+      />
 
       <div className="relative z-10 text-center px-6 max-w-3xl">
         <motion.p
@@ -85,6 +96,7 @@ export default function Hero() {
             <a
               href="#projects"
               className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-accent to-cyan text-white font-medium hover:shadow-lg hover:shadow-accent/25 transition-all duration-300"
+              style={{ animation: "pulse-glow 3s ease-in-out infinite" }}
             >
               View My Work
             </a>

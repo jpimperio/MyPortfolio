@@ -1,10 +1,9 @@
-import { Code2, Globe, MessageCircle, Mail } from "lucide-react";
+import { Code2, Globe, Mail } from "lucide-react";
 import { personalInfo } from "../../data/portfolio";
 
 const iconMap = {
   github: Code2,
   linkedin: Globe,
-  twitter: MessageCircle,
   email: Mail,
 };
 

@@ -28,7 +28,9 @@ export default function Skills() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group"
+              whileHover={{ scale: 1.02, x: 5 }}
+              className="group p-4 rounded-xl transition-colors duration-300 hover:bg-deep-700/30 cursor-default"
+              data-cursor
             >
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-xl">{skill.icon}</span>

@@ -9,6 +9,7 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import BlogList from "./components/sections/BlogList";
 import BlogPost from "./components/sections/BlogPost";
+import WaveDivider from "./components/ui/WaveDivider";
 import SEO from "./components/ui/SEO";
 
 function Home() {
@@ -17,9 +18,13 @@ function Home() {
       <SEO />
       <Hero />
       <About />
+      <WaveDivider />
       <Skills />
+      <WaveDivider />
       <Experience />
+      <WaveDivider />
       <Projects />
+      <WaveDivider />
       <Contact />
     </PageTransition>
   );

@@ -28,7 +28,10 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="w-72 h-72 md:w-80 md:h-80 mx-auto rounded-2xl bg-gradient-to-br from-accent/20 to-cyan/20 border border-deep-600 flex items-center justify-center overflow-hidden">
+            <div
+              className="w-72 h-72 md:w-80 md:h-80 mx-auto rounded-2xl bg-gradient-to-br from-accent/20 to-cyan/20 border border-deep-600 flex items-center justify-center overflow-hidden"
+              style={{ animation: "float 4s ease-in-out infinite" }}
+            >
               {personalInfo.avatar ? (
                 <img
                   src={personalInfo.avatar}

@@ -30,12 +30,16 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.2 }}
-              className={`relative flex flex-col md:flex-row gap-6 mb-12 ${
+              whileHover={{ scale: 1.02 }}
+              className={`relative flex flex-col md:flex-row gap-6 mb-12 p-4 rounded-xl transition-colors duration-300 hover:bg-deep-700/20 ${
                 i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
+              data-cursor
             >
               <div className="hidden md:block flex-1" />
-              <div className="absolute left-4 md:left-1/2 w-4 h-4 -translate-x-1/2 bg-accent rounded-full border-4 border-deep-900 z-10 top-1" />
+              <div className="absolute left-4 md:left-1/2 w-4 h-4 -translate-x-1/2 bg-accent rounded-full border-4 border-deep-900 z-10 top-5"
+                style={{ animation: "pulse-glow 2s ease-in-out infinite" }}
+              />
               <div className={`flex-1 pl-10 md:pl-0 ${i % 2 === 0 ? "md:text-right md:pr-10" : "md:pl-10"}`}>
                 <span className="text-xs text-accent-light font-medium tracking-wider uppercase">
                   {item.period}
