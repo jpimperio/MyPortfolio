@@ -1,8 +1,11 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { personalInfo } from "../../data/portfolio";
-import Scene3D from "../three/Scene3D";
+import Magnetic from "../ui/Magnetic";
+
+const Scene3D = lazy(() => import("../three/Scene3D"));
+import TextReveal from "../ui/TextReveal";
 
 const words = ["Developer", "Designer", "Creator", "Dreamer"];
 
@@ -78,18 +81,22 @@ export default function Hero() {
           transition={{ delay: 1 }}
           className="flex items-center justify-center gap-4"
         >
-          <a
-            href="#projects"
-            className="px-8 py-3 rounded-full bg-gradient-to-r from-accent to-cyan text-white font-medium hover:shadow-lg hover:shadow-accent/25 transition-all duration-300"
-          >
-            View My Work
-          </a>
-          <a
-            href="#contact"
-            className="px-8 py-3 rounded-full border border-deep-600 text-slate-300 hover:border-accent/50 hover:text-accent-light transition-all duration-300"
-          >
-            Get in Touch
-          </a>
+          <Magnetic>
+            <a
+              href="#projects"
+              className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-accent to-cyan text-white font-medium hover:shadow-lg hover:shadow-accent/25 transition-all duration-300"
+            >
+              View My Work
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="#contact"
+              className="inline-block px-8 py-3 rounded-full border border-deep-600 text-slate-300 hover:border-accent/50 hover:text-accent-light transition-all duration-300"
+            >
+              Get in Touch
+            </a>
+          </Magnetic>
         </motion.div>
       </div>
 

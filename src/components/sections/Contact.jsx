@@ -4,6 +4,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
 import AnimatedSection from "../ui/AnimatedSection";
+import Magnetic from "../ui/Magnetic";
+import { sendEmail } from "../../lib/emailjs";
 import { personalInfo } from "../../data/portfolio";
 
 const schema = z.object({
@@ -21,22 +23,26 @@ export default function Contact() {
   } = useForm({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data) => {
-    await new Promise((r) => setTimeout(r, 1500));
-    alert("Message sent! (demo)");
-    reset();
+    try {
+      await sendEmail({
+        from_name: data.name,
+        from_email: data.email,
+        message: data.message,
+        to_name: personalInfo.name,
+      });
+      alert("Message sent successfully!");
+      reset();
+    } catch {
+      alert("Failed to send. Check EmailJS config or try again later.");
+    }
   };
 
   return (
     <AnimatedSection id="contact" className="py-24 px-6 bg-deep-800/50">
       <div className="max-w-6xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-white mb-4 text-center"
-        >
+        <TextReveal className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
           Get in <span className="text-cyan">Touch</span>
-        </motion.h2>
+        </TextReveal>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -127,26 +133,26 @@ export default function Contact() {
                 </p>
               )}
             </div>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent to-cyan text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 disabled:opacity-50"
-            >
-              {isSubmitting ? (
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                >
-                  <Send size={18} />
-                </motion.div>
-              ) : (
-                <>
-                  <Send size={18} /> Send Message
-                </>
-              )}
-            </motion.button>
+            <Magnetic>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-accent to-cyan text-white font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 disabled:opacity-50"
+              >
+                {isSubmitting ? (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                  >
+                    <Send size={18} />
+                  </motion.div>
+                ) : (
+                  <>
+                    <Send size={18} /> Send Message
+                  </>
+                )}
+              </button>
+            </Magnetic>
           </motion.form>
         </div>
       </div>

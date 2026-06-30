@@ -1,19 +1,15 @@
 import { motion } from "framer-motion";
 import { experience } from "../../data/portfolio";
 import AnimatedSection from "../ui/AnimatedSection";
+import TextReveal from "../ui/TextReveal";
 
 export default function Experience() {
   return (
     <AnimatedSection id="experience" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-white mb-4 text-center"
-        >
+        <TextReveal className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
           My <span className="text-accent">Journey</span>
-        </motion.h2>
+        </TextReveal>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

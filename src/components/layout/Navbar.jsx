@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "../ui/ThemeToggle";
@@ -15,6 +16,8 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -33,23 +36,47 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a
-          href="#hero"
+        <Link
+          to="/"
           className="text-xl font-bold bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent"
         >
           Portfolio
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
+          {isHome
+            ? links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-slate-400 hover:text-accent-light transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))
+            : links.slice(0, 1).map((link) => (
+                <Link
+                  key="/"
+                  to="/"
+                  className="text-sm text-slate-400 hover:text-accent-light transition-colors"
+                >
+                  Home
+                </Link>
+              ))}
+          <Link
+            to="/blog"
+            className="text-sm text-slate-400 hover:text-accent-light transition-colors"
+          >
+            Blog
+          </Link>
+          {isHome && (
             <a
-              key={link.href}
-              href={link.href}
+              href="#contact"
               className="text-sm text-slate-400 hover:text-accent-light transition-colors"
             >
-              {link.label}
+              Contact
             </a>
-          ))}
+          )}
           <ThemeToggle />
         </div>
 
@@ -74,16 +101,25 @@ export default function Navbar() {
             className="md:hidden bg-deep-800/95 backdrop-blur-lg border-t border-deep-700/50 overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
-              {links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="text-slate-300 hover:text-accent-light transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {isHome
+                ? links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="text-slate-300 hover:text-accent-light transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ))
+                : null}
+              <Link
+                to="/blog"
+                onClick={() => setOpen(false)}
+                className="text-slate-300 hover:text-accent-light transition-colors"
+              >
+                Blog
+              </Link>
             </div>
           </motion.div>
         )}
