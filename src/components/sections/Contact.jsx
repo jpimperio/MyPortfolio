@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
 import AnimatedSection from "../ui/AnimatedSection";
 import Magnetic from "../ui/Magnetic";
+import TextReveal from "../ui/TextReveal";
 import { sendEmail } from "../../lib/emailjs";
 import { personalInfo } from "../../data/portfolio";
 

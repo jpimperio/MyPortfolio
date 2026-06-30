@@ -6,7 +6,6 @@ export const personalInfo = {
   resumeUrl: "#",
   social: {
     github: "https://github.com/jpimperio",
-    twitter: "https://x.com/jpimperio",
     email: "timdtkdpaul@gmail.com",
   },
 };
