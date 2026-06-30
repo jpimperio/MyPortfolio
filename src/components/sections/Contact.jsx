@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
 import AnimatedSection from "../ui/AnimatedSection";
 import Magnetic from "../ui/Magnetic";
-import TextReveal from "../ui/TextReveal";
+import SectionHeader from "../ui/SectionHeader";
 import { sendEmail } from "../../lib/emailjs";
 import { personalInfo } from "../../data/portfolio";
 
@@ -41,18 +41,12 @@ export default function Contact() {
   return (
     <AnimatedSection id="contact" className="py-24 px-6 bg-deep-800/50">
       <div className="max-w-6xl mx-auto">
-        <TextReveal className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
-          Get in <span className="text-cyan">Touch</span>
-        </TextReveal>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-slate-400 text-center max-w-xl mx-auto mb-16"
-        >
-          Have a project in mind? Let's build something great together
-        </motion.p>
+        <SectionHeader
+          id="contact"
+          title="Get in"
+          accentWord="Touch"
+          subtitle="HAVE A PROJECT IN MIND? LET'S BUILD SOMETHING GREAT TOGETHER"
+        />
 
         <div className="grid md:grid-cols-2 gap-12">
           <motion.div

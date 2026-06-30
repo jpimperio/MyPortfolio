@@ -1,24 +1,18 @@
 import { motion } from "framer-motion";
 import { personalInfo } from "../../data/portfolio";
 import AnimatedSection from "../ui/AnimatedSection";
-import TextReveal from "../ui/TextReveal";
+import SectionHeader from "../ui/SectionHeader";
 
 export default function About() {
   return (
     <AnimatedSection id="about" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <TextReveal className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
-          About <span className="text-accent">Me</span>
-        </TextReveal>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-slate-400 text-center max-w-xl mx-auto mb-16"
-        >
-          Get to know me a little better
-        </motion.p>
+        <SectionHeader
+          id="about"
+          title="About"
+          accentWord="Me"
+          subtitle="GET TO KNOW ME A LITTLE BETTER"
+        />
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div

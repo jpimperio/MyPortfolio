@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Calendar, ArrowRight } from "lucide-react";
 import { getPosts } from "../../data/posts";
-import TextReveal from "../ui/TextReveal";
+import SectionHeader from "../ui/SectionHeader";
 import SEO from "../ui/SEO";
 
 const posts = getPosts();
@@ -12,12 +12,12 @@ export default function BlogList() {
     <section className="min-h-screen py-24 px-6">
       <SEO title="Blog" description="Thoughts, tutorials, and things I've learned about web development." />
       <div className="max-w-4xl mx-auto">
-        <TextReveal className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
-          My <span className="text-accent">Blog</span>
-        </TextReveal>
-        <p className="text-slate-400 text-center max-w-xl mx-auto mb-16">
-          Thoughts, tutorials, and things I've learned
-        </p>
+        <SectionHeader
+          id="blog"
+          title="My"
+          accentWord="Blog"
+          subtitle="THOUGHTS, TUTORIALS, AND THINGS I'VE LEARNED"
+        />
 
         {posts.length === 0 && (
           <p className="text-center text-slate-500">No posts yet. Check back soon!</p>

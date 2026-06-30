@@ -22,6 +22,34 @@
   100% { background-position: 200% 0; }
 }
 
+@keyframes scanline {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes crt-on {
+  0% { transform: scaleY(0.01) scaleX(0.01); opacity: 0; filter: brightness(10); }
+  30% { transform: scaleY(0.01) scaleX(1); opacity: 1; filter: brightness(5); }
+  60% { transform: scaleY(1) scaleX(1.02); filter: brightness(1.5); }
+  100% { transform: scaleY(1) scaleX(1); opacity: 1; filter: brightness(1); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  20% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 2px); }
+  40% { clip-path: inset(50% 0 30% 0); transform: translate(3px, -1px); }
+  60% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 1px); }
+  80% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -2px); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  92% { opacity: 0.9; }
+  94% { opacity: 0.3; }
+  96% { opacity: 0.9; }
+}
+
 @theme {
   --color-deep-900: #0a0a0f;
   --color-deep-800: #12121a;
@@ -36,6 +64,8 @@
   --color-slate-400: #94a3b8;
   --color-slate-500: #64748b;
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-pixel: "Press Start 2P", monospace;
+  --font-mono: "VT323", "Courier New", monospace;
 }
 
 * {
@@ -43,9 +73,7 @@
 }
 
 @media (pointer: coarse) {
-  * {
-    cursor: auto;
-  }
+  * { cursor: auto; }
 }
 
 html {
@@ -55,24 +83,56 @@ html {
 body {
   @apply bg-deep-900 text-slate-300 font-sans;
   margin: 0;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9995;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+#crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9994;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+#screen-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9993;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  animation: flicker 0.15s infinite;
+}
+
+.crt-text {
+  text-shadow:
+    0 0 4px rgba(139, 92, 246, 0.3),
+    0 0 8px rgba(6, 182, 212, 0.15);
 }
 
 ::selection {
-  @apply bg-accent/30 text-white;
+  @apply bg-accent/40 text-white;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-deep-900;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-deep-600 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-accent/50;
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { @apply bg-deep-900; }
+::-webkit-scrollbar-thumb { @apply bg-deep-600 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-accent/50; }

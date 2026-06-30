@@ -5,7 +5,6 @@ import { personalInfo } from "../../data/portfolio";
 import Magnetic from "../ui/Magnetic";
 
 const Scene3D = lazy(() => import("../three/Scene3D"));
-import TextReveal from "../ui/TextReveal";
 
 const words = ["Developer", "Designer", "Creator", "Dreamer"];
 
@@ -48,18 +47,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-accent-light font-medium mb-4 tracking-wider uppercase text-sm"
+          className="font-pixel text-[10px] text-accent-light mb-4 tracking-[0.2em]"
         >
-          Welcome to my portfolio
+          {'//'} SYSTEM ONLINE {'//'}
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight"
+          className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight crt-text"
         >
-          Hi, I'm{" "}
+          HI, I'M{" "}
           <span className="bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent">
             {personalInfo.name}
           </span>

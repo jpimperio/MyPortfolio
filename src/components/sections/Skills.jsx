@@ -1,24 +1,18 @@
 import { motion } from "framer-motion";
 import { skills } from "../../data/portfolio";
 import AnimatedSection from "../ui/AnimatedSection";
-import TextReveal from "../ui/TextReveal";
+import SectionHeader from "../ui/SectionHeader";
 
 export default function Skills() {
   return (
     <AnimatedSection id="skills" className="py-24 px-6 bg-deep-800/50">
       <div className="max-w-6xl mx-auto">
-        <TextReveal className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
-          My <span className="text-cyan">Skills</span>
-        </TextReveal>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-slate-400 text-center max-w-xl mx-auto mb-16"
-        >
-          Technologies I wield
-        </motion.p>
+        <SectionHeader
+          id="skills"
+          title="My"
+          accentWord="Skills"
+          subtitle="TECHNOLOGIES I WIELD"
+        />
 
         <div className="grid md:grid-cols-2 gap-6">
           {skills.map((skill, i) => (

@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Code2, X, Sparkles } from "lucide-react";
+import { ExternalLink, Code2, X } from "lucide-react";
 import { projects } from "../../data/portfolio";
 import AnimatedSection from "../ui/AnimatedSection";
-import TextReveal from "../ui/TextReveal";
+import SectionHeader from "../ui/SectionHeader";
+import KeyHint from "../ui/KeyHint";
 
 const filters = ["All", ...new Set(projects.flatMap((p) => p.tags))];
 
@@ -41,18 +42,12 @@ export default function Projects() {
       <GlowAura hovered={hoveredCard} />
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <TextReveal className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
-          My <span className="text-accent">Projects</span>
-        </TextReveal>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-slate-400 text-center max-w-xl mx-auto mb-8"
-        >
-          Select a project to learn more
-        </motion.p>
+        <SectionHeader
+          id="projects"
+          title="My"
+          accentWord="Projects"
+          subtitle="SELECT A PROJECT TO LEARN MORE"
+        />
 
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {filters.map((f) => (
@@ -126,11 +121,11 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-700/80 via-transparent to-transparent" />
 
                   <motion.div
-                    className="absolute top-3 right-3 bg-accent/90 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1"
+                    className="absolute top-3 right-3"
                     initial={{ opacity: 0, x: 20 }}
                     whileHover={{ opacity: 1, x: 0 }}
                   >
-                    <Sparkles size={12} /> Select
+                    <KeyHint action="Select" className="text-accent-light" />
                   </motion.div>
                 </div>
 

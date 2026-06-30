@@ -38,9 +38,9 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link
           to="/"
-          className="text-xl font-bold bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent"
+          className="font-pixel text-sm bg-gradient-to-r from-accent to-cyan bg-clip-text text-transparent"
         >
-          Portfolio
+          PORTFOLIO
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

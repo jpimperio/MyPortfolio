@@ -1,24 +1,18 @@
 import { motion } from "framer-motion";
 import { experience } from "../../data/portfolio";
 import AnimatedSection from "../ui/AnimatedSection";
-import TextReveal from "../ui/TextReveal";
+import SectionHeader from "../ui/SectionHeader";
 
 export default function Experience() {
   return (
     <AnimatedSection id="experience" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <TextReveal className="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
-          My <span className="text-accent">Journey</span>
-        </TextReveal>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="text-slate-400 text-center max-w-xl mx-auto mb-16"
-        >
-          Where I've worked and what I've done
-        </motion.p>
+        <SectionHeader
+          id="experience"
+          title="My"
+          accentWord="Journey"
+          subtitle="WHERE I'VE WORKED AND WHAT I'VE DONE"
+        />
 
         <div className="relative">
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent via-cyan to-deep-700 -translate-x-1/2" />
